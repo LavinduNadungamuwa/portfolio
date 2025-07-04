@@ -1,7 +1,6 @@
 import React from 'react';
 import { ChevronDown, Download, Sparkles } from 'lucide-react';
 import { useAnalytics } from '../hooks/useAnalytics.js';
-import profileImg from '../../dist/assets/profile.jpg'; // adjust path as needed
 
 const Hero = () => {
   const { trackResumeDownload } = useAnalytics();
@@ -36,7 +35,7 @@ const Hero = () => {
                 <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
                   {/* Replace initials with image */}
                   <img
-                    src={profileImg}
+                    src="/assets/profile.jpg"
                     alt="Lavindu Nadungamuwa"
                     className="w-24 h-24 rounded-full object-cover"
                   />
