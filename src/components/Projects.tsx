@@ -52,17 +52,25 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
+        setError(null);
+        
         const response = await projectsAPI.getAll(false, 4);
         
         if (response.success && response.data.length > 0) {
           setProjects(response.data);
+          
+          // Show message if using fallback data
+          if (response.message) {
+            setError(response.message);
+          }
         } else {
           setProjects(defaultProjects);
+          setError('Using demo projects');
         }
       } catch (error) {
-        console.warn('Failed to fetch projects from API, using defaults:', error);
+        console.warn('Failed to fetch projects from API, using defaults:', error.message);
         setProjects(defaultProjects);
-        setError('Using demo projects (API unavailable)');
+        setError(`Using demo projects (${error.message.includes('server') ? 'server unavailable' : 'API error'})`);
       } finally {
         setLoading(false);
       }
@@ -127,7 +135,7 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <ProjectCard key={project.id || index} {...project} />
+            <ProjectCard key={project.id || project._id || index} {...project} />
           ))}
         </div>
 

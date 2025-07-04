@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+let isConnected = false;
+
 const connectDB = async () => {
   try {
     const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio';
@@ -14,9 +16,11 @@ const connectDB = async () => {
     });
 
     console.log(`📊 MongoDB Connected: ${conn.connection.host}`);
+    isConnected = true;
     return true;
   } catch (error) {
     console.log('❌ MongoDB connection failed:', error.message);
+    isConnected = false;
     
     // In development, continue without database
     if (process.env.NODE_ENV !== 'production') {
@@ -30,5 +34,8 @@ const connectDB = async () => {
     process.exit(1);
   }
 };
+
+// Export connection status checker
+export const isDatabaseConnected = () => isConnected;
 
 export default connectDB;

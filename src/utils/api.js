@@ -29,14 +29,30 @@ const apiRequest = async (endpoint, options = {}) => {
 
   try {
     const response = await fetch(url, config);
-    const data = await response.json();
+    
+    // Handle non-JSON responses
+    const contentType = response.headers.get('content-type');
+    let data;
+    
+    if (contentType && contentType.includes('application/json')) {
+      data = await response.json();
+    } else {
+      const text = await response.text();
+      data = { message: text || 'Unknown error' };
+    }
 
     if (!response.ok) {
-      throw new Error(data.message || 'API request failed');
+      throw new Error(data.message || `HTTP ${response.status}: ${response.statusText}`);
     }
 
     return data;
   } catch (error) {
+    // Check if it's a network error
+    if (error.name === 'TypeError' && error.message.includes('fetch')) {
+      console.error('Network Error - Backend server may be down:', error);
+      throw new Error('Backend server is not responding. Please check if the server is running.');
+    }
+    
     console.error('API Error:', error);
     throw error;
   }
@@ -88,8 +104,8 @@ export const analyticsAPI = {
       });
     } catch (error) {
       // Don't throw analytics errors to avoid breaking user experience
-      console.warn('Analytics tracking failed:', error);
-      return null;
+      console.warn('Analytics tracking failed (this is normal if database is unavailable):', error.message);
+      return { success: true, message: 'Analytics tracking skipped' };
     }
   },
 

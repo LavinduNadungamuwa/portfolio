@@ -1,11 +1,21 @@
 import express from 'express';
 import Analytics from '../models/Analytics.js';
+import { isDatabaseConnected } from '../config/database.js';
 
 const router = express.Router();
 
 // Track analytics event
 router.post('/track', async (req, res) => {
   try {
+    // Check if database is connected
+    if (!isDatabaseConnected()) {
+      console.log('Analytics tracking skipped - database not connected');
+      return res.json({
+        success: true,
+        message: 'Analytics tracking skipped (database unavailable)'
+      });
+    }
+
     const { type, data, sessionId } = req.body;
 
     if (!type || !data || !sessionId) {
@@ -33,9 +43,11 @@ router.post('/track', async (req, res) => {
 
   } catch (error) {
     console.error('Analytics tracking error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to track analytics'
+    
+    // Return success to avoid breaking user experience
+    res.json({
+      success: true,
+      message: 'Analytics tracking failed gracefully'
     });
   }
 });
@@ -43,6 +55,25 @@ router.post('/track', async (req, res) => {
 // Get analytics summary (admin)
 router.get('/summary', async (req, res) => {
   try {
+    // Check if database is connected
+    if (!isDatabaseConnected()) {
+      return res.json({
+        success: true,
+        data: {
+          period: req.query.period || '7d',
+          summary: {
+            totalViews: 0,
+            uniqueVisitors: 0,
+            contactForms: 0,
+            resumeDownloads: 0
+          },
+          topPages: [],
+          topProjects: []
+        },
+        message: 'Database unavailable - showing default data'
+      });
+    }
+
     const { period = '7d' } = req.query;
     
     let startDate = new Date();
@@ -158,6 +189,22 @@ router.get('/summary', async (req, res) => {
 // Get detailed analytics (admin)
 router.get('/detailed', async (req, res) => {
   try {
+    // Check if database is connected
+    if (!isDatabaseConnected()) {
+      return res.json({
+        success: true,
+        data: {
+          analytics: [],
+          pagination: {
+            current: 1,
+            pages: 0,
+            total: 0
+          }
+        },
+        message: 'Database unavailable - no analytics data'
+      });
+    }
+
     const { type, period = '7d', page = 1, limit = 50 } = req.query;
     
     let startDate = new Date();
