@@ -33,12 +33,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-600 rounded-full animate-spin-slow"></div>
               <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center">
                 <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-                  {/* Replace initials with image */}
-                  <img
-                    src="/assets/profile.jpg"
-                    alt="Lavindu Nadungamuwa"
-                    className="w-24 h-24 rounded-full object-cover"
-                  />
+                  <span className="text-2xl font-bold text-white">LN</span>
                 </div>
               </div>
             </div>
