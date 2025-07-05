@@ -31,8 +31,18 @@ const Hero = () => {
           <div className="mb-8">
             <div className="relative w-32 h-32 mx-auto mb-6">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-600 rounded-full animate-spin-slow"></div>
-              <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+              <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full p-1">
+                <img 
+                  src="/assets/profile.jpg" 
+                  alt="Lavindu Nadungamuwa"
+                  className="w-full h-full rounded-full object-cover shadow-lg"
+                  onError={(e) => {
+                    // Fallback to initials if image fails to load
+                    e.target.style.display = 'none';
+                    e.target.nextElementSibling.style.display = 'flex';
+                  }}
+                />
+                <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full items-center justify-center shadow-lg hidden">
                   <span className="text-2xl font-bold text-white">LN</span>
                 </div>
               </div>
