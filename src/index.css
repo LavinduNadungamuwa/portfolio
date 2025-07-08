@@ -47,7 +47,7 @@
   }
 
   .gradient-bg-secondary {
-    @apply bg-gradient-to-br from-gray-50 via-slate-50 to-zinc-100/50 dark:from-gray-800 dark:via-gray-850 dark:to-slate-900/50;
+    @apply bg-gradient-to-br from-gray-50 via-slate-50 to-zinc-100/50 dark:from-gray-800 dark:via-gray-800 dark:to-slate-900/50;
   }
 
   /* Professional button styles */
