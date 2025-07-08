@@ -94,6 +94,7 @@
   .animate-slide-up {
     animation: slideUp 0.8s ease-out forwards;
   }
+}
 
 @layer utilities {
   .animate-fade-in {
