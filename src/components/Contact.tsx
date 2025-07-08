@@ -106,45 +106,45 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-12 gradient-bg-primary transition-all duration-500 min-h-screen flex items-center">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section id="contact" className="py-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300 min-h-screen flex items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="w-full">
           <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
             <MessageSquare className="w-6 h-6 text-blue-500 animate-pulse" />
-            <span className="text-sm font-semibold text-muted uppercase tracking-widest">
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
               Let's Connect
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
             Get In Touch
           </h2>
-          <div className="section-divider mb-4"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed">
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-xl md:text-2xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Let's Connect
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed font-medium">
+            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
               Looking for a software engineering intern or want to collaborate? I'd love to hear from you.
             </p>
 
             <div className="space-y-4">
               {contactInfo.map((item, index) => (
-                <div key={index} className="group flex items-center gap-4 card-elevated p-4 hover:scale-105 transition-all duration-300">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${item.color} rounded-xl flex items-center justify-center text-white shadow-xl group-hover:shadow-2xl transition-shadow animate-glow`}>
+                <div key={index} className="group flex items-center gap-4">
+                  <div className={`w-10 h-10 bg-gradient-to-r ${item.color} rounded-lg flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-shadow`}>
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-sm text-muted font-medium uppercase tracking-wider">{item.label}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{item.label}</p>
                     <a 
                       href={item.href}
-                      className="text-gray-900 dark:text-white font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                      className="text-gray-900 dark:text-white font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     >
                       {item.value}
                     </a>
@@ -154,7 +154,7 @@ const Contact = () => {
             </div>
 
             <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-              <h4 className="text-base font-bold text-gray-900 dark:text-white mb-3">Follow Me</h4>
+              <h4 className="text-base font-semibold text-gray-900 dark:text-white mb-3">Follow Me</h4>
               <div className="flex gap-4">
                 {socialLinks.map((link, index) => (
                   <a
@@ -162,7 +162,7 @@ const Contact = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-12 h-12 glass-card rounded-xl flex items-center justify-center text-gray-600 dark:text-gray-300 ${link.color} ${link.bgColor} transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 hover:scale-110 focus-ring`}
+                    className={`w-10 h-10 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-300 ${link.color} ${link.bgColor} transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1`}
                     aria-label={link.label}
                   >
                     <div className="w-5 h-5">{link.icon}</div>
@@ -172,30 +172,30 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="glass-card-strong rounded-2xl shadow-2xl p-6">
-            <h3 className="text-xl md:text-2xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-6 border border-gray-100 dark:border-gray-700">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Send a Message
             </h3>
             
             {submitStatus && (
               <div className={`mb-4 p-3 rounded-lg flex items-center gap-3 ${
                 submitStatus.type === 'success' 
-                  ? 'glass-card bg-green-50/50 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-700' 
-                  : 'glass-card bg-red-50/50 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-700'
+                  ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-700' 
+                  : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-700'
               }`}>
                 {submitStatus.type === 'success' ? (
                   <CheckCircle className="w-5 h-5 flex-shrink-0" />
                 ) : (
                   <AlertCircle className="w-5 h-5 flex-shrink-0" />
                 )}
-                <p className="text-sm font-medium">{submitStatus.message}</p>
+                <p className="text-sm">{submitStatus.message}</p>
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Name *
                   </label>
                   <input
@@ -205,12 +205,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 glass-card border border-gray-300 dark:border-gray-600 rounded-xl focus-ring transition-all duration-300 text-gray-900 dark:text-white font-medium"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Email *
                   </label>
                   <input
@@ -220,14 +220,14 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 glass-card border border-gray-300 dark:border-gray-600 rounded-xl focus-ring transition-all duration-300 text-gray-900 dark:text-white font-medium"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                     placeholder="your.email@example.com"
                   />
                 </div>
               </div>
               
               <div>
-                <label htmlFor="subject" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Subject *
                 </label>
                 <input
@@ -237,13 +237,13 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 glass-card border border-gray-300 dark:border-gray-600 rounded-xl focus-ring transition-all duration-300 text-gray-900 dark:text-white font-medium"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   placeholder="What's this about?"
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Message *
                 </label>
                 <textarea
@@ -253,7 +253,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 glass-card border border-gray-300 dark:border-gray-600 rounded-xl focus-ring transition-all duration-300 resize-none text-gray-900 dark:text-white font-medium"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   placeholder="Tell me about your project or just say hello!"
                 ></textarea>
               </div>
@@ -261,11 +261,11 @@ const Contact = () => {
               <button 
                 type="submit"
                 disabled={isSubmitting}
-                className="group w-full btn-primary disabled:from-blue-400 disabled:to-indigo-400 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 focus-ring"
+                className="group w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 disabled:from-blue-400 disabled:to-purple-400 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:transform-none flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin shadow-lg"></div>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                     <span>Sending...</span>
                   </>
                 ) : (

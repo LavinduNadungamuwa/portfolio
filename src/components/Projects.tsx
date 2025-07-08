@@ -109,25 +109,25 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="section-padding gradient-bg-primary transition-all duration-500">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Sparkles className="w-6 h-6 text-yellow-500 animate-pulse" />
-            <span className="text-sm font-semibold text-muted uppercase tracking-widest">
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
               My Work
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Featured Projects
           </h2>
-          <div className="section-divider mb-6"></div>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed">
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-6"></div>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Here are some of my recent projects that showcase my skills in full-stack development, 
             UI/UX design, and problem-solving.
           </p>
           {error && (
-            <p className="text-sm text-amber-600 dark:text-amber-400 mt-4 font-medium">
+            <p className="text-sm text-amber-600 dark:text-amber-400 mt-2">
               {error}
             </p>
           )}
@@ -140,7 +140,7 @@ const Projects = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="group btn-primary inline-flex items-center gap-2 focus-ring">
+          <button className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
             <span>View All Projects</span>
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>
