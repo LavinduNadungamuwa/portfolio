@@ -13,7 +13,7 @@ function AppContent() {
   useAnalytics();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 transition-colors duration-300">
+    <div className="min-h-screen gradient-bg-primary transition-all duration-500">
       <Navbar />
       <Hero />
       <About />

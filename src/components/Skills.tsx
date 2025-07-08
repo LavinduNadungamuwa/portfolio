@@ -74,20 +74,20 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="section-padding gradient-bg-secondary transition-all duration-500">
+      <div className="max-w-7xl mx-auto container-padding">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Cpu className="w-6 h-6 text-blue-500 animate-pulse" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+            <span className="text-sm font-semibold text-muted uppercase tracking-widest">
               Technical Expertise
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
             Technical Skills
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-6"></div>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <div className="section-divider mb-6"></div>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed">
             A comprehensive overview of my technical expertise and the tools I use to bring ideas to life.
           </p>
         </div>
@@ -95,19 +95,19 @@ const Skills = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {skillCategories.map((category, index) => (
             <div key={index} className="group relative">
-              <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl blur`}></div>
-              <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-transparent">
+              <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl blur`}></div>
+              <div className="relative card-interactive p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center text-white shadow-lg`}>
+                  <div className={`w-12 h-12 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center text-white shadow-xl animate-glow`}>
                     {category.icon}
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{category.title}</h3>
+                  <h3 className="text-lg font-black text-gray-900 dark:text-white tracking-tight">{category.title}</h3>
                 </div>
                 <div className="space-y-2">
                   {category.skills.map((skill, skillIndex) => (
                     <span 
                       key={skillIndex}
-                      className="inline-block bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 px-3 py-1 rounded-full text-sm text-gray-700 dark:text-gray-300 mr-2 mb-2 shadow-sm transition-colors cursor-default"
+                      className="inline-block glass-card hover:bg-blue-50/50 dark:hover:bg-blue-900/20 px-3 py-1 rounded-full text-sm text-gray-700 dark:text-gray-300 mr-2 mb-2 shadow-lg transition-all duration-300 cursor-default hover:scale-105 font-medium"
                     >
                       {skill}
                     </span>
@@ -118,10 +118,10 @@ const Skills = () => {
           ))}
         </div>
 
-        <div className="bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 rounded-3xl p-8 border border-gray-100 dark:border-gray-700">
+        <div className="glass-card-strong rounded-3xl p-8 shadow-2xl">
           <div className="flex items-center justify-center gap-2 mb-8">
             <Globe className="w-6 h-6 text-blue-500" />
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white text-center">
+            <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white text-center tracking-tight">
               Proficiency Levels
             </h3>
           </div>
@@ -129,15 +129,15 @@ const Skills = () => {
             {proficiencyLevels.map((item, index) => (
               <div key={index} className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{item.skill}</span>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">{item.level}%</span>
+                  <span className="text-sm font-bold text-gray-700 dark:text-gray-300">{item.skill}</span>
+                  <span className="text-sm text-muted font-mono font-bold">{item.level}%</span>
                 </div>
-                <div className="relative w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
+                <div className="relative w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 overflow-hidden shadow-inner">
                   <div 
-                    className={`h-full bg-gradient-to-r ${item.color} rounded-full transition-all duration-1000 ease-out relative overflow-hidden`}
+                    className={`h-full bg-gradient-to-r ${item.color} rounded-full transition-all duration-1000 ease-out relative overflow-hidden shadow-lg`}
                     style={{ width: `${item.level}%` }}
                   >
-                    <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
+                    <div className="absolute inset-0 bg-white/30 animate-pulse"></div>
                   </div>
                 </div>
               </div>
