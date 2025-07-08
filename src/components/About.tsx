@@ -65,18 +65,21 @@ const About = () => {
         <div className="grid lg:grid-cols-3 gap-8 items-start">
           {/* Profile Section */}
           <div className="lg:col-span-1">
-            <div className="relative w-64 h-64 mx-auto mb-6">
+            <div className="relative w-64 h-64 mx-auto mb-6  ">
               {/* Animated rings */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-600/20 animate-pulse"></div>
+              <div className="absolute inset-0  bg-gradient-to-br from-blue-500/20 to-purple-600/20 animate-pulse"></div>
               <div className="absolute inset-2 rounded-xl bg-white dark:bg-gray-800 shadow-2xl flex items-center justify-center">
                 <div className="text-center">
-                  <div className="relative w-20 h-20 mx-auto mb-3">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full animate-spin-slow"></div>
-                    <div className="absolute inset-1 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center">
-                      <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">LN</span>
-                    </div>
+                  <div className="relative w-64 h-64 mx-auto mb-3">
+                      {/* Profile image with circular frame */}
+                      <div className="w-64 h-64 overflow-hidden border-4 shadow-lg mx-auto bg-gradient-to-br from-blue-500 via-purple-600 to-pink-600 border-transparent">
+                          <img
+                              src="/profile.jpg"
+                              alt="Profile"
+                              className="object-cover w-full h-full "
+                          />
+                      </div>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-400 font-medium text-sm">Professional Photo</p>
                 </div>
               </div>
               {/* Floating elements */}
