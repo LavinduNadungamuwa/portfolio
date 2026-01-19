@@ -1,6 +1,6 @@
-import React from 'react';
-import { ChevronDown, Download, Sparkles } from 'lucide-react';
-import { useAnalytics } from '../hooks/useAnalytics.js';
+import { ChevronDown, Download } from 'lucide-react';
+import { useAnalytics } from '../hooks/useAnalytics';
+import profileImg from '/profile.jpg';
 
 const Hero = () => {
   const { trackResumeDownload } = useAnalytics();
@@ -27,37 +27,23 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="animate-fade-in">
-          <div className="mb-8">
-            <div className="relative w-32 h-32 mx-auto mb-6">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-600 rounded-full animate-spin-slow"></div>
-              <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full p-1">
-                <img 
-                  src="/profile.jpg"
-                  alt="Lavindu Nadungamuwa"
-                  className="w-full h-full rounded-full object-cover shadow-lg"
-                  onError={(e) => {
-                    // Fallback to initials if image fails to load
-                    (e.target as HTMLImageElement).style.display = 'none';
-                    if (e.target.nextElementSibling) {
-                      (e.target.nextElementSibling as HTMLElement).style.display = 'flex';
-                    }
-                  }}
-                />
-                <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full items-center justify-center shadow-lg hidden">
-                  <span className="text-2xl font-bold text-white">LN</span>
+        <div className="animate-fade-in flex flex-col items-center">
+          <div className="relative w-40 h-40 md:w-52 md:h-52 mx-auto mb-8">
+              {/* Neon glow layers */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 blur-2xl opacity-60 animate-pulse"></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-500 blur-xl opacity-40"></div>
+              
+              {/* Main profile container */}
+              <div className="relative w-full h-full rounded-full border-2 border-white/20 dark:border-white/10 bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 p-0.5 shadow-2xl shadow-purple-500/50 dark:shadow-purple-500/30 overflow-hidden">
+                <div className="w-full h-full rounded-full overflow-hidden ring-1 ring-white/50 dark:ring-white/20">
+                  <img
+                    src={profileImg}
+                    alt="Profile"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Sparkles className="w-6 h-6 text-yellow-500 animate-pulse" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
-              Software Engineering Student
-            </span>
-            <Sparkles className="w-6 h-6 text-yellow-500 animate-pulse" />
-          </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Hi, I'm{' '} <br />
