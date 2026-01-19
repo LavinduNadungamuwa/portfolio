@@ -46,7 +46,7 @@ const Hero = () => {
             </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            Hi, I'm{' '} <br />
+            Hi, I'm{' '}
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
               Lavindu Nadungamuwa
             </span>
@@ -62,10 +62,10 @@ const Hero = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <button
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-2"
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+              className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
             >
-              <span>View My Work</span>
+              <span>About Me</span>
               <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
             </button>
             

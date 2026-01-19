@@ -50,101 +50,118 @@ const About = () => {
     <section id="about" className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <Heart className="w-5 h-5 text-red-500 animate-pulse" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
-              Get to know me
-            </span>
+          <div className='flex justify-center items-center gap-2 mb-2'>
+            <Heart className="w-7 h-7 text-red-500 animate-pulse" />
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+              About Me
+            </h2>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
-            About Me
-          </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 items-start">
+        <div className="grid lg:grid-cols-3 gap-8 items-stretch">
           {/* Profile Section */}
           <div className="lg:col-span-1">
-            <div className="relative w-64 h-64 mx-auto mb-6  ">
-              {/* Animated rings */}
-              <div className="absolute inset-0  bg-gradient-to-br from-blue-500/20 to-purple-600/20 animate-pulse"></div>
-              <div className="absolute inset-2 rounded-xl bg-white dark:bg-gray-800 shadow-2xl flex items-center justify-center">
-                <div className="text-center">
-                  <div className="relative w-64 h-64 mx-auto mb-3">
-                      {/* Profile image with circular frame */}
-                      <div className="w-64 h-64 overflow-hidden border-4 shadow-lg mx-auto bg-gradient-to-br from-blue-500 via-purple-600 to-pink-600 border-transparent">
-                          <img
-                              src="/profile.jpg"
-                              alt="Profile"
-                              className="object-cover w-full h-full "
-                          />
-                      </div>
+            <div className="relative h-full">
+              {/* Neon glow frame */}
+              <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-600 rounded-2xl blur-lg opacity-15"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-br from-blue-400 via-purple-400 to-pink-500 rounded-2xl blur opacity-10"></div>
+              
+              {/* Content container */}
+              <div className="relative h-full bg-white dark:bg-gray-800 rounded-2xl p-6 border-2 border-gray-200 dark:border-gray-700 flex flex-col items-center">
+                {/* Profile Picture */}
+                <div className="relative w-48 h-48 mb-6">
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-600/10 rounded-2xl blur-xl"></div>
+                  
+                  {/* Professional frame */}
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-200 dark:border-gray-700">
+                    <img
+                      src="/profile.jpg"
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
+                  
+                  {/* Corner accent */}
+                  <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-tl-3xl rounded-br-xl opacity-90"></div>
                 </div>
-              </div>
-              {/* Floating elements */}
-              <div className="absolute -top-3 -right-3 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full animate-bounce delay-300"></div>
-              <div className="absolute -bottom-3 -left-3 w-5 h-5 bg-gradient-to-br from-green-400 to-blue-500 rounded-full animate-bounce delay-700"></div>
-            </div>
 
-            {/* Personal Info */}
-            <div className="space-y-3">
-              {personalInfo.map((item, index) => (
-                <div key={index} className="flex items-center gap-3 text-sm">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <p className="text-gray-500 dark:text-gray-400 text-xs">{item.label}</p>
-                    <p className="text-gray-900 dark:text-white font-medium">{item.value}</p>
-                  </div>
+                {/* Personal Info */}
+                <div className="w-full space-y-3 mb-6">
+                  {personalInfo.map((item, index) => (
+                    <div key={index} className="flex items-center gap-3 text-sm">
+                      <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <p className="text-gray-500 dark:text-gray-400 text-xs">{item.label}</p>
+                        <p className="text-gray-900 dark:text-white font-medium">{item.value}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+
+                {/* View My Work Button */}
+                <button
+                  onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                >
+                  <span>View My Work</span>
+                  <Rocket className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Content Section */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <Zap className="w-5 h-5 text-yellow-500" />
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
-                Software Engineering Student with a Passion for Innovation
-              </h3>
-            </div>
-            
-            <div className="space-y-4 mb-6">
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I'm pursuing my BSc.Hon's Software Engineering degree at Sabaragamuwa University of Sri Lanka, 
-                developing strong foundations in software engineering principles and modern development practices. 
-                My journey began with curiosity about how applications work and evolved into a passion for creating 
-                impactful solutions.
-              </p>
+            <div className="relative h-full">
+              {/* Neon glow frame */}
+              <div className="absolute -inset-1 bg-gradient-to-br from-purple-500 via-pink-600 to-blue-500 rounded-2xl blur-lg opacity-15"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-br from-purple-400 via-pink-500 to-blue-400 rounded-2xl blur opacity-10"></div>
               
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I specialize in web development, artificial intelligence, and mobile applications. I thrive on 
-                transforming complex problems into elegant, user-friendly solutions. Beyond coding, I explore 
-                emerging technologies, contribute to open-source projects, and mentor fellow students.
-              </p>
-            </div>
+              {/* Content container */}
+              <div className="relative h-full bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 flex flex-col">
+                <div className="flex items-start gap-3 mb-6">
+                  <Zap className="w-6 h-6 text-yellow-500 flex-shrink-0 mt-1" />
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+                    Frontend Developer with Full-Stack Capabilities
+                  </h3>
+                </div>
 
-            {/* Highlights Grid */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              {highlights.map((item, index) => (
-                <div key={index} className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl blur"></div>
-                  <div className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
-                    <div className="flex items-start gap-3">
-                      <div className={`flex-shrink-0 w-10 h-10 bg-gradient-to-r ${item.color} rounded-lg flex items-center justify-center text-white shadow-lg`}>
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm">{item.title}</h4>
-                        <p className="text-xs text-gray-600 dark:text-gray-400">{item.description}</p>
+                <div className="space-y-4 mb-8 flex-grow">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    I'm pursuing a BSc in Software Engineering at Sabaragamuwa University of Sri Lanka.
+                    My primary focus is frontend development, where I create responsive and intuitive user interfaces.
+                  </p>
+
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    While frontend is my main strength, I'm also comfortable with backend development,
+                    databases, and exploring technologies like Cloud and mobile apps.
+                  </p>
+                </div>
+
+                {/* Highlights Grid */}
+                <div className="grid sm:grid-cols-2 gap-4 mt-auto">
+                  {highlights.map((item, index) => (
+                    <div key={index} className="group relative">
+                      <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl blur"></div>
+                      <div className="relative bg-gray-50 dark:bg-gray-900 p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
+                        <div className="flex items-start gap-3">
+                          <div className={`flex-shrink-0 w-10 h-10 bg-gradient-to-r ${item.color} rounded-lg flex items-center justify-center text-white shadow-lg`}>
+                            {item.icon}
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm">{item.title}</h4>
+                            <p className="text-xs text-gray-600 dark:text-gray-400">{item.description}</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
