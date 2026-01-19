@@ -14,7 +14,7 @@ const Hero = () => {
 
   const handleResumeDownload = () => {
     trackResumeDownload();
-    alert('Resume download would start here. In production, this would download your actual resume PDF.');
+    window.open('https://drive.google.com/file/d/1XBppnnFnc8o8upMtK-wR5laLXhar1jaU/view?usp=sharing', '_blank');
   };
 
   return (
