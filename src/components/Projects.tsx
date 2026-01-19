@@ -1,15 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import ProjectCard from './ProjectCard';
-import { projectsAPI } from '../utils/api.js';
+import { projectsAPI } from '../utils/api';
+
+interface Project {
+  id?: string;
+  _id?: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  githubUrl: string;
+  liveUrl: string;
+  imageUrl: string;
+}
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   // Default projects as fallback
-  const defaultProjects = [
+  const defaultProjects: Project[] = [
     {
       id: 'default-1',
       title: "E-Commerce Platform",
@@ -67,7 +78,8 @@ const Projects = () => {
           setProjects(defaultProjects);
           setError('Using demo projects');
         }
-      } catch (error) {
+      } catch (err) {
+        const error = err as Error;
         console.warn('Failed to fetch projects from API, using defaults:', error.message);
         setProjects(defaultProjects);
         setError(`Using demo projects (${error.message.includes('server') ? 'server unavailable' : 'API error'})`);
@@ -140,10 +152,15 @@ const Projects = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          <a 
+            href="https://github.com/LavinduNadungamuwa" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+          >
             <span>View All Projects</span>
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+          </a>
         </div>
       </div>
     </section>
