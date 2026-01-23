@@ -1,9 +1,25 @@
 import { ChevronDown, Download } from 'lucide-react';
 import { useAnalytics } from '../hooks/useAnalytics';
 import profileImg from '/profile.jpg';
+import { useState, useEffect } from 'react';
 
 const Hero = () => {
   const { trackResumeDownload } = useAnalytics();
+  const [displayedText, setDisplayedText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const fullText = "A passionate Software Engineering Undergraduate dedicated to building innovative solutions and creating exceptional digital experiences that make a difference.";
+  
+  useEffect(() => {
+    if (currentIndex < fullText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(prev => prev + fullText[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, 30); // Adjust speed here (lower = faster)
+      
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, fullText]);
 
   const scrollToNext = () => {
     const aboutSection = document.getElementById('about');
@@ -52,12 +68,21 @@ const Hero = () => {
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-            A passionate{' '}
-            <span className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Software Engineering Undergraduate
-            </span>
-            {' '}dedicated to building innovative solutions and creating exceptional digital experiences that make a difference.
+          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed min-h-[4rem] md:min-h-[3.5rem]">
+            {displayedText.split('Software Engineering Undergraduate').map((part, index) => {
+              if (index === 0) {
+                return <span key={index}>{part}</span>;
+              }
+              return (
+                <span key={index}>
+                  <span className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    Software Engineering Undergraduate
+                  </span>
+                  {part}
+                </span>
+              );
+            })}
+            <span className="animate-pulse">|</span>
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
